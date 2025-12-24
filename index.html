@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitnessPal - ติดตามสุขภาพของคุณ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="container">
+            <h1 class="logo">💪 FitnessPal</h1>
+            <nav aria-label="Primary Navigation">
+                <ul>
+                    <li><a href="#today">วันนี้</a></li>
+                    <li><a href="#features">ฟีเจอร์</a></li>
+                    <li><a href="#progress">ความคืบหน้า</a></li>
+                    <li><a href="#start" class="cta-nav">เริ่มใช้งาน</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <h2>ดูแลสุขภาพของคุณ<br>ด้วยวิธีที่ง่ายและมีแผน</h2>
+                <p class="hero-subtitle">บันทึกแคลอรี่ ออกกำลังกาย และติดตามความคืบหน้าได้ในที่เดียว</p>
+                <button class="btn-primary" type="button" id="start">เริ่มติดตามวันนี้</button>
+            </div>
+        </section>
+
+        <!-- Today's Summary Section -->
+        <section id="today" class="today-section">
+            <div class="container">
+                <h2>📊 สรุปวันนี้</h2>
+                
+                <!-- Main Calorie Card - ใช้ article เพราะเป็นเนื้อหาอิสระ -->
+                <article class="calorie-card main-card" aria-labelledby="calorie-heading">
+                    <h3 id="calorie-heading">แคลอรี่คงเหลือ</h3>
+                    <data value="1245" class="calorie-number">1,245</data>
+                    <p class="calorie-detail">จากเป้าหมาย 1,800 cal</p>
+                    <div class="progress-bar" role="progressbar" aria-valuenow="31" aria-valuemin="0" aria-valuemax="100" aria-label="แคลอรี่ที่บริโภค">
+                        <div class="progress-fill" style="width: 31%;"></div>
+                    </div>
+                </article>
+                
+                <!-- Stats Grid - ใช้ div เพราะเป็นแค่ layout wrapper -->
+                <div class="stats-grid">
+                    <article class="stat-card">
+                        <span class="stat-icon" aria-hidden="true">🍽️</span>
+                        <div class="stat-info">
+                            <p class="stat-label">รับเข้า</p>
+                            <p class="stat-value">555 cal</p>
+                        </div>
+                    </article>
+                    
+                    <article class="stat-card">
+                        <span class="stat-icon" aria-hidden="true">🔥</span>
+                        <div class="stat-info">
+                            <p class="stat-label">เผาผลาญ</p>
+                            <p class="stat-value">320 cal</p>
+                        </div>
+                    </article>
+                    
+                    <article class="stat-card">
+                        <span class="stat-icon" aria-hidden="true">⚡</span>
+                        <div class="stat-info">
+                            <p class="stat-label">ออกกำลังกาย</p>
+                            <p class="stat-value">45 นาที</p>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Quick Actions - ใช้ div เพราะเป็น button group -->
+                <div class="quick-actions">
+                    <button class="btn-action" type="button">+ บันทึกมื้ออาหาร</button>
+                    <button class="btn-action" type="button">+ บันทึกออกกำลังกาย</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Features Section -->
+        <section id="features" class="features-section">
+            <div class="container">
+                <h2>✨ ฟีเจอร์หลัก</h2>
+                <p class="section-subtitle">ทุกอย่างที่คุณต้องการ เพื่อดูแลสุขภาพอย่างมีแผน</p>
+                
+                <!-- Features Grid - ใช้ div สำหรับ grid layout -->
+                <div class="features-grid">
+                    <!-- Feature Card - ใช้ article เพราะแต่ละการ์ดเป็นเนื้อหาอิสระ -->
+                    <article class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">🎯</div>
+                        <h3>ตั้งเป้าหมาย</h3>
+                        <p>กำหนดน้ำหนักเป้าหมายและรับคำแนะนำแคลอรี่ที่เหมาะสมกับคุณ</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">🍎</div>
+                        <h3>บันทึกอาหาร</h3>
+                        <p>บันทึกมื้ออาหารง่ายๆ พร้อมฐานข้อมูลอาหารไทยมากมาย</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">🏃</div>
+                        <h3>ออกกำลังกาย</h3>
+                        <p>ติดตามการออกกำลังกายและแคลอรี่ที่เผาผลาญได้</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">📈</div>
+                        <h3>ดูสรุปรายวัน</h3>
+                        <p>เห็นแคลอรี่เข้า-ออกของวันนี้ในหน้าเดียว ไม่ต้องคำนวณเอง</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">📊</div>
+                        <h3>รายงานความคืบหน้า</h3>
+                        <p>ติดตามกราฟน้ำหนักและความคืบหน้าแบบรายสัปดาห์</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon" aria-hidden="true">💡</div>
+                        <h3>คำแนะนำ</h3>
+                        <p>รับคำแนะนำเมื่อกินเกิน หรือกินน้อยเกินไป</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Section -->
+        <section id="progress" class="progress-section">
+            <div class="container">
+                <h2>📈 ความคืบหน้าของคุณ</h2>
+                
+                <!-- Progress Overview - ใช้ div สำหรับ flexbox layout -->
+                <div class="progress-overview">
+                    <article class="progress-card">
+                        <h3>น้ำหนักปัจจุบัน</h3>
+                        <div class="weight-display">
+                            <data value="65.5" class="current-weight">65.5</data>
+                            <span class="weight-unit">kg</span>
+                        </div>
+                        <p class="weight-change">↓ -2.5 kg จากเป้าหมาย</p>
+                    </article>
+
+                    <article class="progress-card">
+                        <h3>สัปดาห์นี้</h3>
+                        <ul class="week-stats">
+                            <li>✅ บันทึกครบ 5 วัน</li>
+                            <li>✅ ออกกำลังกาย 3 วัน</li>
+                            <li>✅ ไม่เกินแคลอรี่ 4 วัน</li>
+                        </ul>
+                    </article>
+
+                    <article class="progress-card">
+                        <h3>เป้าหมาย</h3>
+                        <div class="goal-info">
+                            <p><strong>น้ำหนักเป้าหมาย:</strong> 63 kg</p>
+                            <p><strong>เวลาโดยประมาณ:</strong> 4 สัปดาห์</p>
+                            <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" aria-label="ความคืบหน้าสู่เป้าหมาย">
+                                <div class="progress-fill" style="width: 50%;"></div>
+                            </div>
+                            <p class="progress-text">ทำไปแล้ว 50%</p>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- TODO: เพิ่มกราฟแสดงแคลอรี่รายวัน -->
+                <!-- TODO: เพิ่มตารางบันทึกย้อนหลัง 7 วัน -->
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="how-it-works" class="how-section">
+            <div class="container">
+                <h2>🚀 เริ่มต้นใช้งานง่ายๆ 3 ขั้นตอน</h2>
+                
+                <!-- Steps Container - ใช้ div สำหรับ flexbox layout -->
+                <div class="steps-container">
+                    <article class="step">
+                        <div class="step-number" aria-label="ขั้นตอนที่ 1">1</div>
+                        <h3>ตั้งเป้าหมาย</h3>
+                        <p>กรอกข้อมูลพื้นฐาน น้ำหนัก ส่วนสูง และเป้าหมายที่ต้องการ</p>
+                    </article>
+
+                    <article class="step">
+                        <div class="step-number" aria-label="ขั้นตอนที่ 2">2</div>
+                        <h3>บันทึกรายวัน</h3>
+                        <p>บันทึกอาหารและการออกกำลังกายหลังแต่ละมื้อ ใช้เวลาไม่ถึง 1 นาที</p>
+                    </article>
+
+                    <article class="step">
+                        <div class="step-number" aria-label="ขั้นตอนที่ 3">3</div>
+                        <h3>ติดตามผล</h3>
+                        <p>ดูสรุปและความคืบหน้าทุกสัปดาห์ มีกำลังใจในการดูแลสุขภาพ</p>
+                    </article>
+                </div>
+
+                <div class="cta-section">
+                    <button class="btn-primary btn-large" type="button">เริ่มต้นเลย - ฟรี!</button>
+                    <p class="cta-note">ไม่ต้องใช้บัตรเครดิต | ใช้งานได้ทันที</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>FitnessPal</h4>
+                    <p>ติดตามสุขภาพของคุณอย่างง่ายดาย</p>
+                </div>
+
+                <nav class="footer-section" aria-label="ลิงก์ด่วน">
+                    <h4>ลิงก์</h4>
+                    <ul>
+                        <li><a href="#features">ฟีเจอร์</a></li>
+                        <li><a href="#progress">ความคืบหน้า</a></li>
+                        <li><a href="#how-it-works">วิธีใช้งาน</a></li>
+                    </ul>
+                </nav>
+
+                <div class="footer-section">
+                    <h4>ติดต่อ</h4>
+                    <ul>
+                        <li><a href="mailto:support@fitnesspal.com">support@fitnesspal.com</a></li>
+                        <li>Facebook: FitnessPal TH</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>สร้างเพื่อ LAB Week 4 – ENGCE301 | นักศึกษา: Mekha Suwanwisut (6654306085-3)</p>
+                <p>Supported Browsers: Chrome, Firefox, Safari, Edge</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

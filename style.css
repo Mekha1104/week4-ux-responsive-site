@@ -1,0 +1,793 @@
+/* ========================================
+   CSS Variables & Reset
+   ======================================== */
+:root {
+    /* Color Palette - เลือกสีที่สื่อถึงสุขภาพและพลังงาน */
+    --primary-color: #4CAF50;
+    --primary-dark: #388E3C;
+    --primary-light: #81C784;
+    --accent-color: #FF6B6B;
+    --text-dark: #2C3E50;
+    --text-light: #6C757D;
+    --bg-light: #F8F9FA;
+    --bg-white: #FFFFFF;
+    --border-color: #E0E0E0;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
+    
+    /* Typography Scale - ใช้ rem เพื่อความ responsive */
+    --font-base: 1rem;
+    --font-sm: 0.875rem;
+    --font-lg: 1.125rem;
+    --font-xl: 1.5rem;
+    --font-2xl: 2rem;
+    --font-3xl: 2.5rem;
+    
+    /* Spacing Scale */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-full: 50%;
+}
+
+/* Reset และ Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Sarabun', sans-serif;
+    font-size: var(--font-base);
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--bg-light);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ========================================
+   Layout - Reusable Container
+   ======================================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+/* ========================================
+   Typography
+   ======================================== */
+h1, h2, h3, h4 {
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-dark);
+}
+
+h1 {
+    font-size: var(--font-3xl);
+}
+
+h2 {
+    font-size: var(--font-2xl);
+    margin-bottom: var(--spacing-md);
+}
+
+h3 {
+    font-size: var(--font-xl);
+    margin-bottom: var(--spacing-sm);
+}
+
+p {
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Additional Typography for Semantic Elements */
+dl {
+    margin: 0;
+}
+
+dt {
+    font-weight: 600;
+    color: var(--text-dark);
+    display: inline;
+}
+
+dd {
+    margin-left: 0;
+    margin-bottom: var(--spacing-xs);
+    display: inline;
+}
+
+dd::after {
+    content: "";
+    display: block;
+    margin-bottom: var(--spacing-xs);
+}
+
+figure {
+    margin: 0;
+}
+
+address {
+    font-style: normal;
+}
+
+small {
+    font-size: var(--font-sm);
+    display: block;
+}
+
+/* Meter and Data Elements */
+meter {
+    width: 100%;
+    height: 12px;
+    display: block;
+}
+
+meter::-webkit-meter-bar {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius-full);
+}
+
+meter::-webkit-meter-optimum-value {
+    background-color: white;
+    border-radius: var(--radius-full);
+}
+
+data {
+    font-weight: inherit;
+}
+
+output {
+    display: inline-block;
+}
+
+/* Ordered List for Steps */
+ol.steps-container {
+    list-style: none;
+}
+
+/* ========================================
+   Header & Navigation
+   ======================================== */
+header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: var(--spacing-md) 0;
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    /* ใช้ Flexbox เพื่อจัด logo และ nav ให้อยู่ริมซ้าย-ขวา */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1.logo {
+    font-size: var(--font-xl);
+    color: white;
+    margin: 0;
+}
+
+/* Navigation - ใช้ Flexbox สำหรับเมนูแนวนอน */
+nav ul {
+    display: flex;
+    gap: var(--spacing-md);
+    list-style: none;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--radius-md);
+    transition: background-color 0.3s ease;
+}
+
+header nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+header nav a.cta-nav {
+    background-color: white;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+header nav a.cta-nav:hover {
+    background-color: var(--bg-light);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+/* ========================================
+   Buttons - Reusable Component
+   ======================================== */
+.btn-primary,
+.btn-action {
+    /* Base button styles */
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: var(--font-base);
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-large {
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: var(--font-lg);
+}
+
+.btn-action {
+    background-color: white;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-action:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* ========================================
+   Hero Section
+   ======================================== */
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 100%);
+    color: white;
+    padding: var(--spacing-xl) 0;
+    text-align: center;
+}
+
+.hero-section header h2 {
+    color: white;
+    font-size: var(--font-3xl);
+    margin-bottom: var(--spacing-md);
+}
+
+.hero-subtitle {
+    font-size: var(--font-lg);
+    margin-bottom: var(--spacing-lg);
+    opacity: 0.95;
+}
+
+/* ========================================
+   Today's Summary Section
+   ======================================== */
+.today-section {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--bg-white);
+}
+
+.calorie-summary {
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Main Calorie Card */
+.main-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+}
+
+.main-card h3 {
+    color: white;
+    font-size: var(--font-lg);
+    margin-bottom: var(--spacing-sm);
+}
+
+.calorie-number {
+    font-size: 4rem;
+    font-weight: 700;
+    margin: var(--spacing-sm) 0;
+}
+
+.calorie-detail {
+    font-size: var(--font-sm);
+    opacity: 0.9;
+    margin-bottom: var(--spacing-md);
+}
+
+/* Progress Bar - Reusable Component */
+.progress-bar {
+    background-color: rgba(255, 255, 255, 0.3);
+    height: 12px;
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.progress-fill {
+    background-color: white;
+    height: 100%;
+    border-radius: var(--radius-full);
+    transition: width 0.5s ease;
+}
+
+/* Stats Grid - ใช้ Flexbox เพื่อจัดการด 3 ใบ */
+.stats-grid {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: space-between;
+}
+
+.stat-card {
+    /* ใช้ Flexbox เพื่อจัด icon และข้อมูล */
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    background-color: var(--bg-white);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    flex: 1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.stat-icon {
+    font-size: 2.5rem;
+}
+
+.stat-label {
+    font-size: var(--font-sm);
+    color: var(--text-light);
+    margin-bottom: 0.25rem;
+}
+
+.stat-value {
+    font-size: var(--font-xl);
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+/* Quick Actions - ใช้ Flexbox */
+.quick-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    margin-top: var(--spacing-lg);
+}
+
+/* ========================================
+   Features Section
+   ======================================== */
+.features-section {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--bg-light);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: var(--text-light);
+    font-size: var(--font-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+/* Features Grid - ใช้ CSS Grid เพื่อจัด 3 คอลัมน์ */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+}
+
+/* Feature Card - Reusable Component */
+.feature-card {
+    background-color: var(--bg-white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.feature-card h3 {
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+.feature-card p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* ========================================
+   Progress Section
+   ======================================== */
+.progress-section {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--bg-white);
+}
+
+.progress-overview {
+    /* ใช้ Flexbox เพื่อจัดการด 3 ใบ */
+    display: flex;
+    gap: var(--spacing-lg);
+}
+
+.progress-card {
+    flex: 1;
+    background-color: var(--bg-light);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.weight-display {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    margin: var(--spacing-md) 0;
+}
+
+.current-weight {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.weight-unit {
+    font-size: var(--font-xl);
+    color: var(--text-light);
+}
+
+.weight-change {
+    text-align: center;
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.week-stats {
+    list-style: none;
+}
+
+.week-stats li {
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--border-color);
+    font-size: var(--font-base);
+}
+
+.week-stats li:last-child {
+    border-bottom: none;
+}
+
+.goal-info p {
+    margin-bottom: var(--spacing-sm);
+}
+
+.progress-text {
+    text-align: center;
+    margin-top: var(--spacing-xs);
+    color: var(--text-light);
+    font-size: var(--font-sm);
+}
+
+/* ========================================
+   How It Works Section
+   ======================================== */
+.how-section {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--bg-light);
+    text-align: center;
+}
+
+.steps-container {
+    /* ใช้ Flexbox เพื่อจัด 3 step ในแนวนอน */
+    display: flex;
+    gap: var(--spacing-xl);
+    margin: var(--spacing-xl) 0;
+}
+
+.step {
+    flex: 1;
+    padding: var(--spacing-lg);
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-2xl);
+    font-weight: 700;
+    margin: 0 auto var(--spacing-md);
+}
+
+.step h3 {
+    color: var(--primary-color);
+}
+
+.cta-section {
+    margin-top: var(--spacing-xl);
+}
+
+.cta-note {
+    margin-top: var(--spacing-sm);
+    color: var(--text-light);
+    font-size: var(--font-sm);
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+footer {
+    background-color: var(--text-dark);
+    color: white;
+    padding: var(--spacing-xl) 0 var(--spacing-md);
+}
+
+.footer-content {
+    /* ใช้ Flexbox เพื่อจัด 3 คอลัมน์ */
+    display: flex;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-lg);
+}
+
+.footer-section {
+    flex: 1;
+}
+
+.footer-section h4 {
+    color: white;
+    margin-bottom: var(--spacing-md);
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section li {
+    margin-bottom: var(--spacing-xs);
+}
+
+.footer-section a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: var(--font-sm);
+}
+
+/* ========================================
+   Responsive Design - Media Queries
+   ======================================== */
+
+/* Tablet (768px and below) */
+@media (max-width: 768px) {
+    /* Typography Scale Down */
+    h1 {
+        font-size: var(--font-2xl);
+    }
+    
+    h2 {
+        font-size: var(--font-xl);
+    }
+    
+    .hero-content h2 {
+        font-size: var(--font-2xl);
+    }
+    
+    /* Header - Stack navigation vertically on smaller screens */
+    header .container {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    header nav ul {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+        width: 100%;
+    }
+    
+    header nav li {
+        width: 100%;
+    }
+    
+    header nav a {
+        display: block;
+        text-align: center;
+        padding: var(--spacing-sm);
+    }
+    
+    /* Stats Grid - จาก 3 คอลัมน์ เป็น 1 คอลัมน์ */
+    .stats-grid {
+        flex-direction: column;
+    }
+    
+    /* Features Grid - จาก 3 คอลัมน์ เป็น 2 คอลัมน์ */
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+    
+    /* Progress Overview - จาก 3 คอลัมน์ เป็น 1 คอลัมน์ */
+    .progress-overview {
+        flex-direction: column;
+    }
+    
+    /* Steps - จาก 3 คอลัมน์ เป็น 1 คอลัมน์ */
+    .steps-container {
+        flex-direction: column;
+        gap: var(--spacing-lg);
+    }
+    
+    /* Footer - จาก 3 คอลัมน์ เป็น 1 คอลัมน์ */
+    .footer-content {
+        flex-direction: column;
+        gap: var(--spacing-lg);
+    }
+    
+    /* Quick Actions - Stack buttons vertically */
+    .quick-actions {
+        flex-direction: column;
+    }
+    
+    .quick-actions button {
+        width: 100%;
+    }
+}
+
+/* Mobile (480px and below) */
+@media (max-width: 480px) {
+    /* Reduce spacing on mobile */
+    :root {
+        --spacing-xl: 2rem;
+        --spacing-lg: 1.5rem;
+        --spacing-md: 1rem;
+    }
+    
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    /* Typography - ลดขนาดฟอนต์เพิ่มเติม */
+    h1 {
+        font-size: var(--font-xl);
+    }
+    
+    h2 {
+        font-size: var(--font-lg);
+    }
+    
+    .hero-content h2 {
+        font-size: var(--font-xl);
+    }
+    
+    .calorie-number {
+        font-size: 3rem;
+    }
+    
+    .current-weight {
+        font-size: 3rem;
+    }
+    
+    /* Features Grid - เป็น 1 คอลัมน์ เต็มความกว้าง */
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Buttons - ขนาดเต็มความกว้างบนมือถือ */
+    .btn-primary,
+    .btn-action {
+        width: 100%;
+        padding: var(--spacing-md);
+    }
+    
+    /* Navigation - ทำให้ปุ่มใหญ่ขึ้น กดง่าย (Touch-friendly) */
+    header nav a {
+        padding: var(--spacing-md);
+        font-size: var(--font-base);
+    }
+    
+    /* Stat Cards - เพิ่ม padding เพื่อให้กดง่าย */
+    .stat-card {
+        padding: var(--spacing-md);
+    }
+    
+    /* Feature Cards - ลด padding เล็กน้อย */
+    .feature-card {
+        padding: var(--spacing-md);
+    }
+    
+    /* Hero Section - ลด padding */
+    .hero-section {
+        padding: var(--spacing-lg) 0;
+    }
+    
+    /* Sections - ลด padding */
+    .today-section,
+    .features-section,
+    .progress-section,
+    .how-section {
+        padding: var(--spacing-lg) 0;
+    }
+}
+
+/* ========================================
+   Print Styles (Bonus)
+   ======================================== */
+@media print {
+    header,
+    footer,
+    .quick-actions,
+    .cta-section {
+        display: none;
+    }
+    
+    body {
+        background-color: white;
+    }
+    
+    .container {
+        max-width: 100%;
+    }
+}
